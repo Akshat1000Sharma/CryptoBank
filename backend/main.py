@@ -17,4 +17,4 @@ app.add_middleware(
 
 @app.get("/")
 def root():
-    return {"msg": "MyToken FastAPI backend is running 🚀"}
+    return {"msg": "MyToken FastAPI backend is running "}
