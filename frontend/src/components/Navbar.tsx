@@ -8,6 +8,12 @@ export default function Navbar() {
           Crypto Bank
         </Link>
         <div className="flex gap-4">
+          <Link href="/" className="hover:underline">
+            Home
+          </Link>
+          <Link href="/dashboard" className="hover:underline">
+            Dashboard
+          </Link>
           <Link href="/balance" className="hover:underline">
             Balance
           </Link>
