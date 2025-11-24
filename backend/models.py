@@ -1,5 +1,5 @@
 from pydantic import BaseModel, Field
-from typing import List, Optional
+from typing import List, Optional, Dict
 
 class TransferRequest(BaseModel):
     to: str = Field(..., description="Recipient address (0x...)")
@@ -34,3 +34,19 @@ class TransactionVerification(BaseModel):
 
 class VerifyRequest(BaseModel):
     verifier_address: str = Field(..., description="Address of the verifier")
+
+class PerformanceMetrics(BaseModel):
+    execution_time_seconds: float
+    successful_count: int
+    failed_count: int
+    total_count: int
+    success_rate: float
+    average_time_per_tx: float
+    tx_hashes: List[str]
+
+class PerformanceComparisonResponse(BaseModel):
+    concurrent_execution: PerformanceMetrics
+    sequential_execution: PerformanceMetrics
+    improvement_percentage: float
+    speedup_factor: float
+    test_configuration: Dict

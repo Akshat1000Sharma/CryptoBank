@@ -1,0 +1,39 @@
+{
+  "concurrent_execution": {
+    "execution_time_seconds": 0.18224716186523438,
+    "successful_count": 5,
+    "failed_count": 0,
+    "total_count": 5,
+    "success_rate": 100.0,
+    "average_time_per_tx": 0.036449432373046875,
+    "tx_hashes": [
+      "8117fe05b3c900096fabc080fc3fc70d157fb161478d3456151febc0f4541edc",
+      "f5fa5d8fbe56b60d256bf9c1f2b2a9c1120c7f9054801d997a98c281717dffbe",
+      "176ad276831cd41c2e67afca5869ea50e21b8eb8c75f662758c69fb604b325cc",
+      "3c110e3cf47ea1bf548d309f45b484750dc7f927b8ee396a2617c380424be23f",
+      "d0848eb714274b0a8381c7b744919e074c62f8603837a91a81e3346b8c07188a"
+    ]
+  },
+  "sequential_execution": {
+    "execution_time_seconds": 0.21622061729431152,
+    "successful_count": 5,
+    "failed_count": 0,
+    "total_count": 5,
+    "success_rate": 100.0,
+    "average_time_per_tx": 0.043244123458862305,
+    "tx_hashes": [
+      "bf06581cb9ca8b9a4b6196fb960945afdb75228db5dd00ef1cafe4bf547bd4f6",
+      "21f644ecb14b2e02fc5e08122fc6020f338b3c1021acc1ec2d073b9cb9802518",
+      "508e8f2231def19e79f24a36373bc4811b014e8e42694d65520561883aee4864",
+      "daf1e8b2e61c33c6b36e1afc3f4d7295ac4e980b56443bbaf33dbb78e900f528",
+      "46b698af26af336fe067d889701a804bb0f250f4e521efc06674a4195640dc00"
+    ]
+  },
+  "improvement_percentage": 15.712403310195777,
+  "speedup_factor": 1.186414181057038,
+  "test_configuration": {
+    "num_transactions": 5,
+    "amount_per_transaction": 0.1,
+    "test_type": "batch_transfer_comparison"
+  }
+}

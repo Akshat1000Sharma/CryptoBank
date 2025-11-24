@@ -2,7 +2,8 @@
 from fastapi import APIRouter, HTTPException
 from models import (
     TransferRequest, BalanceResponse, SwapRequest, SwapResponse,
-    BatchTransferRequest, BatchTransferResponse, TransactionVerification, VerifyRequest
+    BatchTransferRequest, BatchTransferResponse, TransactionVerification, VerifyRequest,
+    PerformanceComparisonResponse
 )
 import service
 from consensus import consensus_manager
@@ -95,5 +96,25 @@ def add_verifier(address: str):
 def get_verifiers():
     try:
         return {"verifiers": list(consensus_manager.verifiers)}
+    except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+@router.get("/performance/comparison", response_model=PerformanceComparisonResponse)
+async def performance_comparison(num_transactions: int = 5):
+    """
+    Performance comparison endpoint.
+    Compares concurrent (parallel) vs sequential batch transfer execution.
+    
+    Args:
+        num_transactions: Number of test transactions (default: 5, max: 10)
+    
+    Returns:
+        Detailed performance metrics for both execution methods
+    """
+    try:
+        # Limit to reasonable number
+        num_transactions = min(max(num_transactions, 1), 10)
+        result = await service.performance_comparison_test(num_transactions)
+        return PerformanceComparisonResponse(**result)
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
