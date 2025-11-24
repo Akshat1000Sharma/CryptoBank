@@ -76,9 +76,9 @@ export default function Balance() {
   };
 
   return (
-    <div className="max-w-2xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6 text-center">Check Token Balances</h1>
-      <p className="text-center text-gray-600 dark:text-gray-400 mb-6">
+    <div className="max-w-2xl mx-auto glass-panel bg-white/5 p-8 text-white rounded-3xl shadow-2xl">
+      <h1 className="text-3xl font-bold mb-3 text-center drop-shadow-lg">Check Token Balances</h1>
+      <p className="text-center text-white/70 mb-6">
         View balances for all tokens in your wallet
       </p>
       
@@ -94,7 +94,7 @@ export default function Balance() {
       </div>
 
       {error && (
-        <div className="mb-4 p-4 bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300 rounded">
+        <div className="mb-4 p-4 bg-red-500/20 text-red-100 rounded-xl border border-red-500/40">
           {error}
         </div>
       )}
@@ -103,39 +103,39 @@ export default function Balance() {
         {balances.map((tokenBalance, index) => (
           <div
             key={index}
-            className="p-4 bg-white dark:bg-gray-800 rounded-lg shadow-md border border-gray-200 dark:border-gray-700"
+            className="p-4 rounded-2xl bg-white/5 border border-white/10 shadow-lg"
           >
             <div className="flex justify-between items-start mb-2">
               <div>
                 <h3 className="font-semibold text-lg">{tokenBalance.name}</h3>
-                <p className="text-sm text-gray-500 dark:text-gray-400 font-mono">
+                <p className="text-sm text-white/60 font-mono">
                   {tokenBalance.address.slice(0, 6)}...{tokenBalance.address.slice(-4)}
                 </p>
               </div>
               {tokenBalance.balance !== null && (
                 <div className="text-right">
-                  <p className="text-2xl font-bold text-green-600 dark:text-green-400">
+                  <p className="text-2xl font-bold text-emerald-300 drop-shadow">
                     {tokenBalance.balance.toFixed(4)}
                   </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{tokenBalance.symbol}</p>
+                  <p className="text-sm text-white/70">{tokenBalance.symbol}</p>
                 </div>
               )}
             </div>
             
             {tokenBalance.error && (
-              <div className="mt-2 p-2 bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300 rounded text-sm">
+              <div className="mt-2 p-2 bg-yellow-400/15 text-yellow-100 border border-yellow-300/30 rounded text-sm">
                 ⚠️ {tokenBalance.error}
               </div>
             )}
             
             {loading && tokenBalance.balance === null && !tokenBalance.error && (
-              <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="mt-2 text-sm text-white/60">
                 Loading...
               </div>
             )}
             
             {!loading && tokenBalance.balance === null && !tokenBalance.error && (
-              <div className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+              <div className="mt-2 text-sm text-white/60">
                 Enter an address and click "Check All Balances"
               </div>
             )}
@@ -144,8 +144,8 @@ export default function Balance() {
       </div>
 
       {balances.some(b => b.balance !== null) && (
-        <div className="mt-6 p-4 bg-blue-50 dark:bg-blue-900 rounded-lg">
-          <p className="text-sm text-blue-800 dark:text-blue-200">
+        <div className="mt-6 p-4 bg-blue-500/20 border border-blue-300/30 rounded-xl">
+          <p className="text-sm text-blue-50">
             💡 Tip: You can use these balances to verify your swaps in the Dashboard!
           </p>
         </div>

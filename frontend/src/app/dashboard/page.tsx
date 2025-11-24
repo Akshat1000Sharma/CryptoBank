@@ -156,13 +156,13 @@ export default function Dashboard() {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto space-y-8">
-      <h1 className="text-4xl font-bold text-center">DeFi Dashboard</h1>
+    <div className="max-w-6xl mx-auto space-y-8 text-white">
+      <h1 className="text-4xl font-bold text-center drop-shadow-lg">DeFi Dashboard</h1>
 
       {/* Token Swap Section */}
-      <section className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">🔄 Token Swap (DeFi)</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
+      <section className="glass-panel bg-white/5 p-6 rounded-3xl space-y-4">
+        <h2 className="text-2xl font-semibold mb-2">🔄 Token Swap (DeFi)</h2>
+        <p className="text-white/70">
           Convert between different tokens using our liquidity pool
         </p>
         <div className="space-y-4">
@@ -190,17 +190,23 @@ export default function Dashboard() {
               placeholder="0.0"
             />
           </div>
-          <div className="flex gap-4">
-            <Button onClick={handleGetQuote}>Get Quote</Button>
-            <Button onClick={handleSwap}>Execute Swap</Button>
+          <div className="flex flex-wrap gap-4">
+            <Button onClick={handleGetQuote} className="flex-1 min-w-[140px]">
+              Get Quote
+            </Button>
+            <Button onClick={handleSwap} className="flex-1 min-w-[140px]">
+              Execute Swap
+            </Button>
           </div>
           {swapQuote !== null && (
-            <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded">
-              <p className="font-semibold">Estimated Amount Out: {swapQuote.toFixed(6)}</p>
+            <div className="p-4 rounded-xl bg-indigo-600/20 border border-white/10">
+              <p className="font-semibold text-sm tracking-wide">
+                Estimated Amount Out: {swapQuote.toFixed(6)}
+              </p>
             </div>
           )}
           {swapResult && (
-            <div className="p-4 bg-green-50 dark:bg-green-900 rounded">
+            <div className="p-4 rounded-xl bg-emerald-500/20 border border-emerald-300/30">
               <p className="text-sm">{swapResult}</p>
             </div>
           )}
@@ -208,14 +214,14 @@ export default function Dashboard() {
       </section>
 
       {/* Batch Transfer Section */}
-      <section className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">⚡ Parallel Batch Transfer</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
+      <section className="glass-panel bg-white/5 p-6 rounded-3xl space-y-4">
+        <h2 className="text-2xl font-semibold mb-2">⚡ Parallel Batch Transfer</h2>
+        <p className="text-white/70">
           Execute multiple transactions in parallel using our super node
         </p>
         <div className="space-y-4">
           {batchTxs.map((tx, index) => (
-            <div key={index} className="flex gap-4 items-end">
+            <div key={index} className="flex flex-col gap-4 md:flex-row md:items-end">
               <div className="flex-1">
                 <label className="block mb-2">To Address</label>
                 <AddressInput
@@ -235,28 +241,30 @@ export default function Dashboard() {
               {batchTxs.length > 1 && (
                 <button
                   onClick={() => removeBatchTx(index)}
-                  className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
+                  className="px-4 py-2 bg-red-500/70 text-white rounded hover:bg-red-500 transition"
                 >
                   Remove
                 </button>
               )}
             </div>
           ))}
-          <div className="flex gap-4">
-            <div className="flex gap-4">
-              <Button onClick={addBatchTx}>Add Transaction</Button>
-              <Button onClick={handleBatchTransfer}>Execute Batch</Button>
-            </div>
+          <div className="flex flex-wrap gap-4">
+            <Button onClick={addBatchTx} className="flex-1 min-w-[160px]">
+              Add Transaction
+            </Button>
+            <Button onClick={handleBatchTransfer} className="flex-1 min-w-[160px]">
+              Execute Batch
+            </Button>
           </div>
           {batchResult && (
-            <div className="p-4 bg-green-50 dark:bg-green-900 rounded">
-              <p className="font-semibold">Batch Transfer Result:</p>
-              <p>Status: {batchResult.status}</p>
-              <p>Verified: {batchResult.verified ? "Yes" : "No"}</p>
-              <p>Count: {batchResult.count}</p>
-              <div className="mt-2">
+            <div className="p-4 rounded-2xl bg-emerald-500/15 border border-emerald-300/20">
+              <p className="font-semibold text-lg mb-2">Batch Transfer Result</p>
+              <p className="text-sm text-white/80">Status: {batchResult.status}</p>
+              <p className="text-sm text-white/80">Verified: {batchResult.verified ? "Yes" : "No"}</p>
+              <p className="text-sm text-white/80">Count: {batchResult.count}</p>
+              <div className="mt-3">
                 <p className="font-semibold">Transaction Hashes:</p>
-                <ul className="list-disc list-inside text-sm">
+                <ul className="list-disc list-inside text-xs text-white/80 space-y-1">
                   {batchResult.tx_hashes.map((hash: string, i: number) => (
                     <li key={i} className="break-all">{hash}</li>
                   ))}
@@ -268,9 +276,9 @@ export default function Dashboard() {
       </section>
 
       {/* Consensus & Verification Section */}
-      <section className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">🔐 Consensus & Verification</h2>
-        <p className="text-gray-600 dark:text-gray-400 mb-4">
+      <section className="glass-panel bg-white/5 p-6 rounded-3xl space-y-4">
+        <h2 className="text-2xl font-semibold mb-2">🔐 Consensus & Verification</h2>
+        <p className="text-white/70">
           Verify transactions using our consensus mechanism
         </p>
         <div className="space-y-4">
@@ -292,12 +300,16 @@ export default function Dashboard() {
               placeholder="0x..."
             />
           </div>
-          <div className="flex gap-4">
-            <Button onClick={handleVerify}>Verify Transaction</Button>
-            <Button onClick={handleGetStatus}>Get Status</Button>
+          <div className="flex flex-wrap gap-4">
+            <Button onClick={handleVerify} className="flex-1 min-w-[160px]">
+              Verify Transaction
+            </Button>
+            <Button onClick={handleGetStatus} className="flex-1 min-w-[160px]">
+              Get Status
+            </Button>
           </div>
           {verificationResult && (
-            <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded">
+            <div className="p-4 rounded-2xl bg-blue-500/20 border border-blue-200/20">
               <p className="font-semibold">Verification Result:</p>
               <p>Consensus Reached: {verificationResult.consensus_reached ? "Yes" : "No"}</p>
               <p>Verification Count: {verificationResult.verification_count}/{verificationResult.threshold}</p>
@@ -305,7 +317,7 @@ export default function Dashboard() {
             </div>
           )}
           {txStatus && (
-            <div className="p-4 bg-blue-50 dark:bg-blue-900 rounded">
+            <div className="p-4 rounded-2xl bg-blue-500/20 border border-blue-200/20">
               <p className="font-semibold">Transaction Status:</p>
               <p>Consensus Reached: {txStatus.consensus_reached ? "Yes" : "No"}</p>
               <p>Executed: {txStatus.executed ? "Yes" : "No"}</p>
@@ -316,10 +328,10 @@ export default function Dashboard() {
       </section>
 
       {/* Verifier Management Section */}
-      <section className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
-        <h2 className="text-2xl font-semibold mb-4">👥 Verifier Management</h2>
+      <section className="glass-panel bg-white/5 p-6 rounded-3xl space-y-4">
+        <h2 className="text-2xl font-semibold mb-2">👥 Verifier Management</h2>
         <div className="space-y-4">
-          <div className="flex gap-4">
+          <div className="flex flex-col gap-4 lg:flex-row">
             <AddressInput
               value={newVerifier}
               onChange={(e) => setNewVerifier(e.target.value)}
@@ -331,9 +343,9 @@ export default function Dashboard() {
           <div>
             <p className="font-semibold mb-2">Registered Verifiers:</p>
             {verifiers.length === 0 ? (
-              <p className="text-gray-500">No verifiers registered</p>
+              <p className="text-white/60">No verifiers registered</p>
             ) : (
-              <ul className="list-disc list-inside">
+              <ul className="list-disc list-inside text-white/80 space-y-1">
                 {verifiers.map((addr, i) => (
                   <li key={i} className="break-all text-sm">{addr}</li>
                 ))}

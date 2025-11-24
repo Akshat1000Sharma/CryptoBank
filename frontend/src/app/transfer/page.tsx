@@ -33,8 +33,8 @@ export default function Transfer() {
   };
 
   return (
-    <div className="max-w-md mx-auto">
-      <h1 className="text-2xl font-bold mb-6">Transfer Tokens</h1>
+    <div className="max-w-md mx-auto glass-panel bg-white/5 p-8 rounded-3xl text-white shadow-2xl">
+      <h1 className="text-2xl font-bold mb-6 text-center">Transfer Tokens</h1>
       <AddressInput
         value={toAddress}
         onChange={(e) => setToAddress(e.target.value)}
@@ -50,12 +50,12 @@ export default function Transfer() {
         {loading ? "Transferring..." : "Transfer Tokens"}
       </Button>
       {txHash && (
-        <div className="mt-4 p-4 bg-green-100 text-green-700 rounded">
-          <p>Transaction successful! Tx Hash: {txHash}</p>
+        <div className="mt-4 p-4 bg-emerald-500/20 border border-emerald-400/30 rounded-2xl">
+          <p className="text-sm">Transaction successful! Tx Hash: {txHash}</p>
         </div>
       )}
       {error && (
-        <div className="mt-4 p-4 bg-red-100 text-red-700 rounded">
+        <div className="mt-4 p-4 bg-red-500/20 border border-red-400/30 rounded-2xl">
           {error}
         </div>
       )}
