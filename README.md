@@ -9,7 +9,7 @@ The system allows users to interact with blockchain-based banking services such 
 
 The project follows a **three-layer architecture**:
 
-```
+
 +-------------------------------+
 |        Frontend Layer         |
 |   Next.js + Liquid Ether UI   |
@@ -27,7 +27,7 @@ The project follows a **three-layer architecture**:
 |  Solidity Smart Contracts     |
 |      (Deployed via Hardhat)   |
 +-------------------------------+
-```
+
 
 ### Components
 
