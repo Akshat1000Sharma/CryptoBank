@@ -5,16 +5,29 @@ CryptoBank is a decentralized banking prototype that combines **Ethereum smart c
 The system allows users to interact with blockchain-based banking services such as deposits, withdrawals, and balance tracking while maintaining a user-friendly web interface.
 
 ---
-
 ## Architecture
 
 The project follows a **three-layer architecture**:
 
-Frontend (Next.js + Liquid Ether UI)  
-            |
-Backend API (FastAPI)  
-            |
-Smart Contracts (Solidity deployed via Hardhat)
+```
++-------------------------------+
+|        Frontend Layer         |
+|   Next.js + Liquid Ether UI   |
++---------------+---------------+
+                |
+                v
++-------------------------------+
+|        Backend API Layer      |
+|            FastAPI            |
++---------------+---------------+
+                |
+                v
++-------------------------------+
+|      Blockchain Layer         |
+|  Solidity Smart Contracts     |
+|      (Deployed via Hardhat)   |
++-------------------------------+
+```
 
 ### Components
 
